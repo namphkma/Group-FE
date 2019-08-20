@@ -1,0 +1,31 @@
+1. Một số chứ năng chính của 1 web bán hàng.
+- Đăng nhập/ đăng ký tài khoản (nếu có)
+- Thông báo (khuyến mãi, bla bla)
+- Theo dõi đơn hàng
+- Tìm kiếm sản phẩm theo tên
+- Danh mục các sản phẩm
+- Sản phẩm đã xem
+- Gợi ý một số từ khóa HOT
+- Bộ lọc(giá tiền, địa chỉ bán...)
+- Giỏ hàng (nơi lưu trữ hàng hóa chọn trước khi thanh toán)
+- Hỗ trợ chăm sóc khách hàng (Hotline, địa chỉ)
+- Phương thức thanh toán (nếu có)
+- Tham gia các chương trình khuyến mãi để thu hút lượt truy cập tăng tỉ lệ mua hàng
+- Liên hệ:
+
+- Để tham gia bán hàng cần:
+ - Đăng kí tài khoản nhà bán hàng(địa chỉ kho hàng, thông tin kinh doanh, tài khoản ngân hàng)
+ - Đăng tải sản phẩm(lần lượt hoặc hàng loạt)
+ - Sử dụng công cụ quản lí Seller Center
+ - Nhận đơn hàng
+ - Xử lí đơn hàng.
+
+- Khi chọn được sản phẩm(click vào 1 sản phẩm) cần phải hiển thị:
+ - Tên sản phẩm
+ - Thương hiệu(nếu có)
+ - Giá thành
+ - Mã khuyến mãi( nếu có)
+ - Thông tin sản phẩm(size, màu sắc, số lượng,...)
+ - Lựa chọn địa chỉ giao hàng
+ - Một số sản phẩm tương tự, liên quan(nếu có)
+ - Liên hệ người bán.
