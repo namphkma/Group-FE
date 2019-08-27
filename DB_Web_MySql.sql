@@ -1,9 +1,5 @@
 drop database if exists DB_Web
 create database DB_Web;
-USE DB_Web;
-go 
-
-
 create table LoaiSanPham(
 	IDLoaiSanPham int AUTO_INCREMENT, 
 	TenLoaiSanPham varchar(200),
