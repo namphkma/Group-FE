@@ -32,7 +32,7 @@ create table NguoiDung(
 	GioiTinh tinyint,
 	NgaySinh Date,
 	Email varchar(100), 
-	UrlAnhNuoiDUng varchar(200),
+	UrlAnhNguoiDung varchar(200),
 	constraint NguoiDung_IDNguoiDung primary key (IDNguoiDung)
 );
 create table LoaiNguoiDung(
