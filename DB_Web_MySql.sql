@@ -1,5 +1,7 @@
 drop database if exists DB_Web
 create database DB_Web;
+USE DB_Web;
+
 create table LoaiSanPham(
 	IDLoaiSanPham int AUTO_INCREMENT, 
 	TenLoaiSanPham varchar(200),
@@ -11,6 +13,7 @@ create table SanPham(
 	NguonGoc varchar(200),
 	Gia int, 
 	ChiTietSanPham text,
+	SoLuong int,
 	IDLoaiSanPham int ,
 	constraint SanPham_IDSanPham  primary key (IDSanPham),
 	constraint SanPham_IDLoaiSanPham foreign key (IDLoaiSanPham) references LoaiSanPham(IDLoaiSanPham)
