@@ -1,10 +1,8 @@
 package com.web.banhang.Web.Rest;
 
-import com.web.banhang.Dao.Impl.UserDao;
 import com.web.banhang.Entity.User;
 import com.web.banhang.Service.Dto.UserDto;
 import com.web.banhang.Service.IUserService;
-import com.web.banhang.Service.Impl.UserService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+
 
 @RestController
 @RequestMapping("/users")
