@@ -8,4 +8,7 @@ public interface IProductService {
     List<Product> getListProduct();
     List<Product> getListTypeOfProduct(int idTypeOfProduct);
     Product getIdProduct(int idProduct);
+    void deleteProduct(Integer idProduct);
+    void updateProduct(Product product);
+    void insertProduct(Product  product);
 }
