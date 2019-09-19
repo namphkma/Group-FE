@@ -25,4 +25,23 @@ public class UserService implements IUserService {
     public List<User> getList() {
         return userDao.getList();
     }
+
+    @Override
+    public User getUserById(int idUser){
+        return userDao.getUserById(idUser);
+    }
+    @Override
+    public Integer deleteUser(int idUser){
+        return userDao.deleteUser(idUser);
+    }
+
+    @Override
+    public Integer insertUser(User user){
+        return userDao.insertUser(user);
+    }
+
+    @Override
+    public Integer updateUser(User user){
+         return userDao.updateUser(user);
+    }
 }

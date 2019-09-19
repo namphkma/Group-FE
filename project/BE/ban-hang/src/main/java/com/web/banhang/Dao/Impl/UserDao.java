@@ -3,9 +3,16 @@ package com.web.banhang.Dao.Impl;
 import com.web.banhang.Dao.IUserDao;
 import com.web.banhang.Entity.User;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class UserDao implements IUserDao {
@@ -28,8 +35,75 @@ public class UserDao implements IUserDao {
         return jdbc
                 .query("select * from NguoiDung",
                         (rs,rowNum) ->
-                        new User(
-                            rs.getString("HoTen")
-                        ));
+                        new User( rs.getInt("IDNguoiDung"),
+                                rs.getString("HoTen"),
+                                rs.getString("TaiKhoan"),
+                                rs.getString("MatKhau"),
+                                rs.getString("DiaChi"),
+                                rs.getString("SoDT"),
+                                rs.getBoolean("GioiTinh"),
+                                rs.getDate("NgaySinh"),
+                                rs.getString("Email"),
+                                rs.getString("UrlAnhNguoiDung")
+                               ));
     }
+    @Override
+    public User getUserById(Integer id) {
+        //Language = SQL
+        String query = "SELECT * FROM NguoiDung WHERE IDNguoiDung = ?";
+        return jdbc.queryForObject(query,new Object[]{id}, (rs,rowNum)->{
+            return convertRsToUser(rs);
+        });
+    }
+    private User convertRsToUser(ResultSet rs) throws SQLException {
+        return new User( rs.getInt("IDNguoiDung"),
+                        rs.getString("HoTen"),
+                        rs.getString("TaiKhoan"),
+                        rs.getString("MatKhau"),
+                        rs.getString("DiaChi"),
+                        rs.getString("SoDT"),
+                        rs.getBoolean("GioiTinh"),
+                        rs.getDate("NgaySinh"),
+                        rs.getString("Email"),
+                        rs.getString("UrlAnhNguoiDung"));
+    }
+
+    @Override
+    public int deleteUser(Integer idUser){
+        String query = "delete from NguoiDung where IDNguoiDung= ?";
+        return jdbc.update(query, new Object[]{Integer.valueOf(idUser) });
+    }
+
+    @Override
+    public int insertUser(User user){
+        String name = user.getUserName();
+        String acc = user.getAccount();
+        String pass = user.getPassword();
+        String addr = user.getAddress();
+        String phone = user.getPhoneNumber();
+        boolean gender = user.isGender();
+        Date dob = user.getDateOfBirth();
+        String email = user.getEmail();
+        String url = user.getUrlPhotoUser();
+        String query = "INSERT INTO `nguoidung` (`HoTen`, `TaiKhoan`, `MatKhau`, `DiaChi`, `SoDT`, `GioiTinh`, `NgaySinh`, `Email`, `UrlAnhNguoiDung`) VALUES  values=(?,?,?,?,?,?,?,?,?);";
+        int rows = jdbc.update(query,name,acc,pass,addr,phone,gender,dob,email,url);
+        return rows;
+    }
+    @Override
+    public int updateUser(User user){
+        String query = "UPDATE NguoiDung SET HoTen=?, TaiKhoan=?, MatKhau=?,DiaChi=?,SoDT=?, GioiTinh=?,NgaySinh=?,Email=?,UrlAnhNguoiDung=? WHERE IDNguoiDung=?";
+        String name = user.getUserName();
+        String acc = user.getAccount();
+        String pass = user.getPassword();
+        String addr = user.getAddress();
+        String phone = user.getPhoneNumber();
+        boolean gender = user.isGender();
+        Date dob = user.getDateOfBirth();
+        String email = user.getEmail();
+        String url = user.getUrlPhotoUser();
+        int id = user.getIdUser();
+         return   jdbc.update(query,name,acc,pass,addr,phone,gender,dob,email,url,id);
+
+    }
+
 }

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.web</groupId>
 	<artifactId>ban-hang</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<name>banhang</name>
 	<description>WEB for my team</description>
