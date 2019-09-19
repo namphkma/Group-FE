@@ -11,6 +11,6 @@ public interface IUserDao {
     List<User> getList();
    User getUserById(Integer idUser);
     int deleteUser(Integer idUser);
-    int insertUser(User user);
+    void insertUser(User user);
     int updateUser(User user);
 }

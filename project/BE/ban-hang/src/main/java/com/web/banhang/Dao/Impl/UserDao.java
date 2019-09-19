@@ -75,7 +75,7 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public int insertUser(User user){
+    public void insertUser(User user){
         String name = user.getUserName();
         String acc = user.getAccount();
         String pass = user.getPassword();
@@ -85,9 +85,10 @@ public class UserDao implements IUserDao {
         Date dob = user.getDateOfBirth();
         String email = user.getEmail();
         String url = user.getUrlPhotoUser();
-        String query = "INSERT INTO `nguoidung` (`HoTen`, `TaiKhoan`, `MatKhau`, `DiaChi`, `SoDT`, `GioiTinh`, `NgaySinh`, `Email`, `UrlAnhNguoiDung`) VALUES  values=(?,?,?,?,?,?,?,?,?);";
-        int rows = jdbc.update(query,name,acc,pass,addr,phone,gender,dob,email,url);
-        return rows;
+        String query = "INSERT INTO nguoidung (HoTen, TaiKhoan, MatKhau, DiaChi, SoDT, GioiTinh,NgaySinh, Email, UrlAnhNguoiDung) VALUES (?,?,?,?,?,?,?,?,?)";
+
+        jdbc.update(query,name,acc,pass,addr,phone,gender,dob,email,url);
+
     }
     @Override
     public int updateUser(User user){

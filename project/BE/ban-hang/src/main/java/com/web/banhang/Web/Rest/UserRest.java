@@ -61,9 +61,12 @@ public class UserRest {
         }
         return new ResponseEntity<>(userService.updateUser(user),HttpStatus.OK);
     }
+    @PostMapping(value = "/insertUser", produces = "application/json")
 
-    @PostMapping(value = "/insertUser")
     public ResponseEntity<User> insertUser(@RequestBody User user, UriComponentsBuilder builder){
+        if(user == null){
+            return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         userService.insertUser(user);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(builder.path("/insertUser/{idUser}").buildAndExpand(user.getIdUser()).toUri());

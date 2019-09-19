@@ -36,8 +36,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Integer insertUser(User user){
-        return userDao.insertUser(user);
+    public void insertUser(User user){
+       userDao.insertUser(user);
     }
 
     @Override

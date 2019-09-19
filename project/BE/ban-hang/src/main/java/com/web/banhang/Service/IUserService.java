@@ -13,6 +13,6 @@ public interface IUserService {
 
     User getUserById(int idUser);
     Integer deleteUser(int idUser);
-    Integer insertUser(User user);
+    void insertUser(User user);
     Integer updateUser(User user);
 }
