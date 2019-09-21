@@ -2,6 +2,7 @@ package com.web.banhang.Service.Impl;
 
 import com.web.banhang.Dao.Impl.ProductDao;
 import com.web.banhang.Entity.Product;
+import com.web.banhang.Service.Dto.ProductDto;
 import com.web.banhang.Service.IProductService;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> getListTypeOfProduct(int idTypeOfProduct) {
+    public List<ProductDto> getListTypeOfProduct(int idTypeOfProduct) {
         return productDao.getListTypeOfProduct(idTypeOfProduct);
     }
 
@@ -43,6 +44,6 @@ public class ProductService implements IProductService {
 
     @Override
     public void insertProduct(Product product) {
-        productDao.updateProduct(product);
+        productDao.insertProduct(product);
     }
 }

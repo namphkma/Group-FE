@@ -2,6 +2,7 @@ package com.web.banhang.Dao.Impl;
 
 import com.web.banhang.Dao.IProductDao;
 import com.web.banhang.Entity.Product;
+import com.web.banhang.Service.Dto.ProductDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -29,14 +30,7 @@ public class ProductDao implements IProductDao {
     public void insertProduct(Product product) {
         String  quyery="INSERT INTO sanpham(TenSanPham,NguonGoc,Gia,ChiTietSanPham,SoLuong,IDLoaiSanPham) VALUES(?,?,?,?,?,?) ";
         jdbc.update(quyery,product.getNameProduct(), product.getOrigin(),product.getPrice(),product.getDetails(), product.getQuantity(), product.getIdTypeOfProduct());
-    int so = jdbc.update(quyery,
-            product.getNameProduct(),
-            product.getOrigin(),
-            product.getPrice(),
-            product.getDetails(),
-            product.getQuantity(),
-            product.getIdTypeOfProduct());
-        System.out.println("insertProduct "+so);
+
     }
 
 
@@ -61,23 +55,26 @@ public class ProductDao implements IProductDao {
                         ));
     }
     @Override
-    public List<Product> getListTypeOfProduct(Integer idTypyOfProduct) {
+    public List<ProductDto> getListTypeOfProduct(Integer idTypyOfProduct) {
         String query = "SELECT " +
-                "sanpham.IDSanPham,sanpham.TenSanPham,sanpham.NguonGoc,sanpham.Gia,sanpham.ChiTietSanPham,sanpham.SoLuong,sanpham.IDLoaiSanPham " +
-                " FROM sanpham INNER JOIN loaisanpham" +
+                "sanpham.IDSanPham,sanpham.TenSanPham,sanpham.NguonGoc,sanpham.Gia,sanpham.ChiTietSanPham,sanpham.SoLuong, " +
+                "loaisanpham.TenLoaiSanPham FROM sanpham INNER JOIN loaisanpham" +
                 " ON sanpham.IDLoaiSanPham = loaisanpham.IDLoaiSanPham WHERE sanpham.IDLoaiSanPham = ?";
         return  jdbc.query(query,new Object[]{idTypyOfProduct},
-                (rs, rowNum) ->
-                        new Product(
-                                rs.getInt("IDSanPham"),
-                                rs.getString("TenSanPham"),
-                                rs.getString("NguonGoc"),
-                                rs.getInt("Gia"),
-                                rs.getString("ChiTietSanPham"),
-                                rs.getInt("SoLuong"),
-                                rs.getInt("IDLoaiSanPham")
+                (rs, rowNum) ->{
+                    ProductDto product = new ProductDto(
+                            rs.getInt("IDSanPham"),
+                            rs.getString("TenSanPham"),
+                            rs.getString("NguonGoc"),
+                            rs.getInt("Gia"),
+                            rs.getString("ChiTietSanPham"),
+                            rs.getInt("SoLuong"),
+                            rs.getString("TenLoaiSanPham")
+                    );
 
-                        ));
+                    return product;
+                }
+                );
     }
 
     private Product convertRsToProduct(ResultSet rs)  throws SQLException  {

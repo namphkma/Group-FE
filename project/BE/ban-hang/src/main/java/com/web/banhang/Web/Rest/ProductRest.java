@@ -1,6 +1,7 @@
 package com.web.banhang.Web.Rest;
 
 import com.web.banhang.Entity.Product;
+import com.web.banhang.Service.Dto.ProductDto;
 import com.web.banhang.Service.IProductService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,7 @@ public class ProductRest {
     }
 
     @GetMapping(value = "/getListTypeOfProduct/{IDLoaiSanPham}")
-    public ResponseEntity<List<Product>> getListTypeOfProduct(@PathVariable("IDLoaiSanPham") Integer IDLoaiSanPham) {
+    public ResponseEntity<List<ProductDto>> getListTypeOfProduct(@PathVariable("IDLoaiSanPham") Integer IDLoaiSanPham) {
         return new ResponseEntity<>(iProductService.getListTypeOfProduct(IDLoaiSanPham), HttpStatus.OK);
     }
 
@@ -60,9 +61,7 @@ public class ProductRest {
     @PostMapping(value = "/insertProduct", produces = "application/json")
     public ResponseEntity<Product> insertProduct(@RequestBody Product product) {
         HttpHeaders httpHeaders = new HttpHeaders();
-        if (product == null) {
-            return new ResponseEntity<Product>(HttpStatus.BAD_REQUEST);
-        }
+
         iProductService.insertProduct(product);
         httpHeaders.add("Product created -", String.valueOf(product.getNameProduct()));
         return new ResponseEntity<Product>(product, httpHeaders, HttpStatus.CREATED);
