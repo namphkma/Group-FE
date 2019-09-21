@@ -1,0 +1,194 @@
+.content {
+    width: 1200px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.content .content_top {
+    width: 1200px;
+    height: 543px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(225, 225, 225);
+}
+
+.content .content_top .menu_list {
+    width: 222px;
+    height: 543px;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+    position: relative;
+    z-index: 0;
+}
+
+.content .content_top .menu_list ul {
+    display: block;
+    list-style: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.content .content_top .menu_list ul li.menu_item {
+    background-color: rgb(255, 255, 255);
+    height: calc(33.9375px);
+}
+
+.content .content_top .menu_list ul li.menu_item a.menu_item__menu_link {
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    z-index: 2;
+    color: rgb(68, 68, 68);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    height: 100%;
+    text-decoration: none;
+}
+
+.content .content_top .menu_list ul li.menu_item a.menu_item__menu_link span.text {}
+
+.content .content_top .menu_list ul li.menu_item a.menu_item__menu_link span.icon_wrap {
+    width: 39px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.content .content_top .menu_list ul li.menu_item a.menu_item__menu_link span.icon_wrap i {
+    width: 11px;
+    height: 18px;
+}
+
+
+/*het phan menu_list*/
+
+.banner .banner_slide .my_slide {
+    width: 960px;
+}
+
+.banner .banner_slide .my_slide img {
+    width: 960px;
+    height: 362px;
+}
+
+.banner_img {
+    display: flex;
+}
+
+.banner_img img {
+    width: 480px;
+    height: 181px;
+}
+
+
+/*het phan top_content*/
+
+.content_bottom {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+h4.kind_of_name {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin-right: auto;
+    /*-----*/
+    margin-bottom: 10px;
+    color: rgb(51, 51, 51);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.content_bottom .list_content {
+    display: flex;
+    flex-wrap: wrap;
+    align-self: stretch;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(225, 225, 225);
+}
+
+.content_bottom .list_content a.item_wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.content_bottom .list_content a.item_wrapper .item_picture {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.content_bottom .list_content a.item_wrapper .item_picture img.image_wrapper {
+    width: 200px;
+    height: 200px;
+}
+
+.content_bottom .list_content a.item_wrapper p.title {
+    position: relative;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-height: 40px;
+    width: 100%;
+    color: rgb(36, 36, 36);
+    font-size: 13px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.54;
+    letter-spacing: 0.1px;
+    text-align: left;
+    text-overflow: ellipsis;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.content_bottom .list_content a.item_wrapper p.price {
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0px;
+    padding: 8px 0px 0px;
+}
+
+.content_bottom .list_content a.item_wrapper p.price span.percent {
+    margin-left: 8px;
+    color: rgb(120, 120, 120);
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.content_bottom .list_content a.item_wrapper p.price span.original {
+    display: block;
+    margin-left: 0px;
+    color: rgb(120, 120, 120);
+    font-size: 13px;
+    font-weight: 300;
+    text-decoration: line-through;
+}
+
+
+/* het phan content*/
