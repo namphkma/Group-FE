@@ -1,6 +1,8 @@
 package com.web.banhang.Web.Rest;
 
+import com.web.banhang.Dao.Impl.UserDao;
 import com.web.banhang.Entity.User;
+import com.web.banhang.Service.Dto.UserDto;
 import com.web.banhang.Service.IUserService;
 import com.web.banhang.Service.Impl.UserService;
 import org.springframework.http.HttpHeaders;
@@ -26,25 +28,24 @@ public class UserRest {
     @GetMapping(value = "/total")
     public Integer getTotalUser(){
         return userService.totalUser();
-
     }
-
-
     @GetMapping(value = "")
-    public List<User> getListUser(){
+    public List<UserDto> getListUser(){
         return userService.getList();
     }
+
     @GetMapping(value = "/{idUser}")
-    public ResponseEntity<User> getUserById(@PathVariable("idUser") Integer idUser){
-        User userExist = userService.getUserById(idUser);
+    public ResponseEntity<UserDto> getUserById(@PathVariable("idUser") Integer idUser){
+        UserDto userExist = userService.getUserById(idUser);
         if(userExist == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(userExist, HttpStatus.ACCEPTED);
     }
+
     @DeleteMapping(value = "/deleteUser/{idUser}")
     public ResponseEntity<Integer> deleteUser(@PathVariable("idUser")Integer idUser){
-        User u = userService.getUserById(idUser);
+        UserDto u = userService.getUserById(idUser);
         if(u==null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -53,7 +54,7 @@ public class UserRest {
 
     @PutMapping (value = "/updateUser/{idUser}")
     public ResponseEntity<Integer> updateUser(@PathVariable("idUser") Integer idUser, @RequestBody User user){
-         User userExist = userService.getUserById(idUser);
+         UserDto userExist = userService.getUserById(idUser);
         if(userExist == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else if(user == null){
@@ -61,8 +62,8 @@ public class UserRest {
         }
         return new ResponseEntity<>(userService.updateUser(user),HttpStatus.OK);
     }
-    @PostMapping(value = "/insertUser", produces = "application/json")
 
+    @PostMapping(value = "/insertUser", produces = "application/json")
     public ResponseEntity<User> insertUser(@RequestBody User user, UriComponentsBuilder builder){
         if(user == null){
             return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
