@@ -46,4 +46,10 @@ git checkout -b be-1
 3. git push origin branch_name
 ```
 
-- Lên github tạo pull request Hãy lưu ý message
+- Khi coding xong hãy pull nhanh master về  bằng câu lệnh( Đôi lúc sẽ bị conflix thì liên hệ)
+
+```
+git pull origin master
+```
+
+- Cuối cùng lên github tạo pull request Hãy lưu ý message
