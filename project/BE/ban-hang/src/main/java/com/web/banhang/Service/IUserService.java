@@ -4,7 +4,6 @@ import com.web.banhang.Entity.User;
 import com.web.banhang.Service.Dto.UserDto;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IUserService {
 
@@ -15,4 +14,5 @@ public interface IUserService {
     Integer deleteUser(int idUser);
     void insertUser(User user);
     Integer updateUser(User user);
+    UserDto loginUser(String account, String password);
 }

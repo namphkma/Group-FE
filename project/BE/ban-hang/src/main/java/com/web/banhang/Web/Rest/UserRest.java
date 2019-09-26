@@ -1,10 +1,8 @@
 package com.web.banhang.Web.Rest;
 
-import com.web.banhang.Dao.Impl.UserDao;
 import com.web.banhang.Entity.User;
 import com.web.banhang.Service.Dto.UserDto;
 import com.web.banhang.Service.IUserService;
-import com.web.banhang.Service.Impl.UserService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
 
 @RestController
 @RequestMapping("/users")
@@ -72,6 +68,15 @@ public class UserRest {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(builder.path("/insertUser/{idUser}").buildAndExpand(user.getIdUser()).toUri());
         return new ResponseEntity<>(user,HttpStatus.CREATED);
+    }
+    @PostMapping(value = "/loginUser", produces = "application/json")
+    public ResponseEntity<UserDto> loginUser(@RequestBody User user){
+        HttpHeaders httpHeaders = new HttpHeaders();
+        UserDto userExist =  userService.loginUser(user.getAccount(),user.getPassword());
+        if(userExist == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(userExist, HttpStatus.ACCEPTED);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.web.banhang.Dao;
 
 import com.web.banhang.Entity.User;
+
 import java.util.List;
 
 public interface IUserDao {
@@ -10,4 +11,5 @@ public interface IUserDao {
     int deleteUser(Integer idUser);
     void insertUser(User user);
     int updateUser(User user);
+    User login(String account, String password);
 }

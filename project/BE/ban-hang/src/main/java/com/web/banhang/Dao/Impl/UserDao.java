@@ -3,16 +3,12 @@ package com.web.banhang.Dao.Impl;
 import com.web.banhang.Dao.IUserDao;
 import com.web.banhang.Entity.User;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Repository
 public class UserDao implements IUserDao {
@@ -105,6 +101,21 @@ public class UserDao implements IUserDao {
         int id = user.getIdUser();
          return   jdbc.update(query,name,acc,pass,addr,phone,gender,dob,email,url,id);
 
+    }
+    @Override
+    public User login(String account, String password){
+        String query= "SELECT * FROM NguoiDung where TaiKhoan=? AND MatKhau=?";
+        return jdbc.queryForObject(query,new Object[]{account,password} ,(rs,rowNum) -> new User(
+                rs.getInt("IDNguoiDung"),
+                rs.getString("HoTen"),
+                rs.getString("TaiKhoan"),
+                rs.getString("MatKhau"),
+                rs.getString("DiaChi"),
+                rs.getString("SoDT"),
+                rs.getBoolean("GioiTinh"),
+                rs.getDate("NgaySinh"),
+                rs.getString("Email"),
+                rs.getString("UrlAnhNguoiDung")));
     }
 
 }

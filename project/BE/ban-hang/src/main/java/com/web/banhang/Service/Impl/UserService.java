@@ -47,4 +47,8 @@ public class UserService implements IUserService {
     public Integer updateUser(User user){
          return userDao.updateUser(user);
     }
+    @Override
+    public UserDto loginUser(String account, String password){
+        return userMapper.mapToDto(userDao.login(account,password));
+    }
 }
