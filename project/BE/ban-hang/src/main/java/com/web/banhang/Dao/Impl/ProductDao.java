@@ -41,7 +41,7 @@ public class ProductDao implements IProductDao {
 
     @Override
     public List<Product> getListProduct() {
-        String query = "select * from  sanpham";
+        String query = "select * from  SanPham";
         return jdbc.query(query,
                 (rs, rowNum) ->
                         new Product(
