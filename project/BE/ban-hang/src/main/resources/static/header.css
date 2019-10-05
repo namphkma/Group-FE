@@ -1,0 +1,204 @@
+.header {
+    background: #f53d2d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f53d2d), to(#f63));
+    background: linear-gradient(-180deg, #f53d2d, #f63);
+    height: 119px;
+    display: block;
+}
+
+.top_header {
+    display: flex;
+    width: 1200px;
+    height: 34px;
+    margin: auto;
+    font-family: Helvetica Neue, Helvetica, Arial, \\6587\6CC9\9A5B\6B63\9ED1, WenQuanYi Zen Hei, Hiragino Sans GB, \\5137\9ED1 Pro, LiHei Pro, Heiti TC, \\5FAE\8EDF\6B63\9ED1\9AD4, Microsoft JhengHei UI, Microsoft JhengHei, sans-serif;
+}
+
+.top_header .list_left {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+    text-align: left;
+    padding-left: 0;
+}
+
+.top_header .list_left a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 0 .4375rem;
+    border-right: 2px solid hsla(0, 0%, 100%, .22);
+}
+
+.top_header .list_right {
+    margin: auto;
+}
+
+ul.list_right {
+    display: flex;
+    list-style: none;
+    text-align: center;
+}
+
+ul.list_right li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 0 .4375rem;
+    border-right: 2px solid hsla(0, 0%, 100%, .22);
+}
+
+.top_header .space {
+    width: 546px;
+}
+
+
+/*hết phần top_header*/
+
+.bottom_header {
+    width: 1200px;
+    height: 85px;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.bottom_header .menu {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0.6px;
+    justify-content: space-between;
+}
+
+.bottom_header .menu a i {
+    color: #fff;
+    width: 100%;
+    font-size: 30px;
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+}
+
+.bottom_header .icon {
+    position: relative;
+    width: 162px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.bottom_header .icon a img {
+    width: 146.15px;
+    height: 46.73px;
+}
+
+.search_box {
+    display: flex;
+    width: 840px;
+    height: 60px;
+    position: relative;
+    margin: auto;
+}
+
+.search_box form.search_form {
+    background-color: #fff;
+    border-color: #fff;
+    box-sizing: border-box;
+    width: 774px;
+    height: 34px;
+}
+
+.bottom_header .search_box form.search_form input {
+    width: 774px;
+    height: 32px;
+    border: 0;
+}
+
+.bottom_header .search_box .button button {
+    width: 60px;
+    height: 34px;
+    background: #f63;
+    border: 0;
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+
+.cart_icon {
+    height: 60px;
+}
+
+.cart_icon a i {
+    color: #fff;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.content .content_top .menu_list {
+    width: 222px;
+    height: 543px;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+}
+
+.content .content_top .menu_list ul {
+    display: block;
+    list-style: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.content .content_top .menu_list ul li.menu_item {
+    background-color: rgb(255, 255, 255);
+    height: calc(33.9375px);
+}
+
+.content .content_top .menu_list ul li.menu_item a.menu_item__menu_link {
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    z-index: 2;
+    color: rgb(68, 68, 68);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    height: 100%;
+    text-decoration: none;
+}
+
+.content .content_top .menu_list ul li.menu_item a.menu_item__menu_link span.text {}
+
+.content .content_top .menu_list ul li.menu_item a.menu_item__menu_link span.icon_wrap {
+    width: 39px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.content .content_top .menu_list ul li.menu_item a.menu_item__menu_link span.icon_wrap i {
+    width: 11px;
+    height: 18px;
+}
