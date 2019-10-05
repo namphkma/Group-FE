@@ -21,7 +21,9 @@ public class ProductController {
     }
 
     @GetMapping
-    public String home(){
+    public String home(Model model){
+
+        model.addAttribute("types",productService.getListProductByListType());
         return "home";
     }
 

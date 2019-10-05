@@ -1,7 +1,10 @@
 package com.web.banhang.Service.Impl;
 
+import com.web.banhang.Dao.IProductDao;
+import com.web.banhang.Dao.ITypeProductDao;
 import com.web.banhang.Dao.Impl.ProductDao;
 import com.web.banhang.Entity.Product;
+import com.web.banhang.Entity.TypeProduct;
 import com.web.banhang.Service.Dto.ProductDto;
 import com.web.banhang.Service.IProductService;
 import org.springframework.stereotype.Service;
@@ -11,10 +14,12 @@ import java.util.List;
 @Service
 public class ProductService implements IProductService {
 
-    ProductDao productDao;
+    private IProductDao productDao;
+    private ITypeProductDao typeProductDao;
 
-    public ProductService(ProductDao productDao) {
+    public ProductService(IProductDao productDao, ITypeProductDao typeProductDao) {
         this.productDao = productDao;
+        this.typeProductDao = typeProductDao;
     }
 
     @Override
@@ -45,5 +50,16 @@ public class ProductService implements IProductService {
     @Override
     public void insertProduct(Product product) {
         productDao.insertProduct(product);
+    }
+
+    @Override
+    public List<TypeProduct> getListProductByListType() {
+        List<TypeProduct> types = typeProductDao.getListType();
+        System.out.println(types.size());
+        for (TypeProduct t:types) {
+            t.setProducts(productDao.getListTypeOfProduct(t.getId()));
+        }
+
+        return types;
     }
 }
