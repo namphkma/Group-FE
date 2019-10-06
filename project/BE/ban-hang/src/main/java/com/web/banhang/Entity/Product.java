@@ -8,6 +8,15 @@ public class Product {
     private String details;
     private int quantity;
     private int idTypeOfProduct;
+    private Image image;
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
 
     public Product() {
     }

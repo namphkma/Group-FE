@@ -1,5 +1,7 @@
 package com.web.banhang.Service.Dto;
 
+import com.web.banhang.Entity.Image;
+
 public class ProductDto {
     private int idProduct;
     private String nameProduct;
@@ -8,6 +10,15 @@ public class ProductDto {
     private String details;
     private int quantity;
     private String typeName;
+    private Image image;
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
 
     public ProductDto(int idProduct, String nameProduct, String origin, int price, String details, int quantity, String typeName) {
         this.idProduct = idProduct;

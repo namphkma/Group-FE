@@ -522,7 +522,7 @@
                 <a th:each="product : ${type.products}" href="" title="iPad WiFi 32GB New 2018 - Hàng Chính Hãng"
                    class="item_wrapper" style="width: 20%;">
                     <div class="item_picture">
-                        <img src="https://salt.tikicdn.com/cache/280x280/ts/product/a5/b1/03/60de1319622d3775ed78fa2199dcb317.jpg"
+                        <img th:src="${product.image.url}"
                              alt="" class="image_wrapper" style=" opacity: 1;">
                     </div>
                     <p class="title" style="height: 40px;" th:text="${product.nameProduct}">

@@ -1,6 +1,7 @@
 package com.web.banhang.Dao.Impl;
 
 import com.web.banhang.Dao.IProductDao;
+import com.web.banhang.Entity.Image;
 import com.web.banhang.Entity.Product;
 import com.web.banhang.Service.Dto.ProductDto;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -41,25 +42,23 @@ public class ProductDao implements IProductDao {
 
     @Override
     public List<Product> getListProduct() {
-        String query = "select * from  sanpham";
+        String query = "SELECT sanpham.*, anh.IDAnh, anh.UrlAnh FROM  sanpham JOIN anh ON sanpham.IDSanPham = anh.IDSanPham";
         return jdbc.query(query,
-                (rs, rowNum) ->
-                        new Product(
-                                rs.getInt("IDSanPham"),
-                                rs.getString("TenSanPham"),
-                                rs.getString("NguonGoc"),
-                                rs.getInt("Gia"),
-                                rs.getString("ChiTietSanPham"),
-                                rs.getInt("SoLuong"),
-                                rs.getInt("IDLoaiSanPham")
-                        ));
+                (rs, rowNum) -> {
+                    Product p = convertRsToProduct(rs);
+                    Image i = new Image(rs.getInt("IDAnh"),rs.getString("UrlAnh"));
+                    p.setImage(i);
+                    return  p;
+                });
     }
+
     @Override
     public List<ProductDto> getListTypeOfProduct(Integer idTypyOfProduct) {
-        String query = "SELECT " +
-                "sanpham.IDSanPham,sanpham.TenSanPham,sanpham.NguonGoc,sanpham.Gia,sanpham.ChiTietSanPham,sanpham.SoLuong, " +
-                "loaisanpham.TenLoaiSanPham FROM sanpham INNER JOIN loaisanpham" +
-                " ON sanpham.IDLoaiSanPham = loaisanpham.IDLoaiSanPham WHERE sanpham.IDLoaiSanPham = ?";
+        String query = "SELECT sanpham.*, anh.IDAnh, anh.UrlAnh, loaisanpham.TenLoaiSanPham " +
+                " FROM sanpham INNER JOIN loaisanpham" +
+                " ON sanpham.IDLoaiSanPham = loaisanpham.IDLoaiSanPham" +
+                " JOIN anh ON sanpham.IDSanPham = anh.IDSanPham" +
+                " WHERE sanpham.IDLoaiSanPham = ?";
         return  jdbc.query(query,new Object[]{idTypyOfProduct},
                 (rs, rowNum) ->{
                     ProductDto product = new ProductDto(
@@ -71,10 +70,10 @@ public class ProductDao implements IProductDao {
                             rs.getInt("SoLuong"),
                             rs.getString("TenLoaiSanPham")
                     );
-
+                    Image i = new Image(rs.getInt("IDAnh"),rs.getString("UrlAnh"));
+                    product.setImage(i);
                     return product;
-                }
-                );
+                });
     }
 
     private Product convertRsToProduct(ResultSet rs)  throws SQLException  {
@@ -87,6 +86,7 @@ public class ProductDao implements IProductDao {
                     rs.getInt("SoLuong"),
                     rs.getInt("IDLoaiSanPham"));
     }
+
     @Override
         public Product getIdProduct(Integer idProduct) {
             String query ="Select * from sanpham where IDSanPham=?";

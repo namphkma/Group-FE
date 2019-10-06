@@ -144,7 +144,7 @@
                 <div class="row">
                     <div class="col-4 mb-5 mt-5" th:each="product : ${products}">
                         <div class="card">
-                            <img src="1.jpg" class="card-img-top" alt="">
+                            <img th:src="${product.image.url}" class="card-img-top" alt="">
                             <div class="card-body">
                                 <h5 class="card-title" th:text="${product.nameProduct}"></h5>
                                 <p class="card-text" th:text="${product.price}"></p>
@@ -153,42 +153,6 @@
                             </div>
                         </div>
                     </div>
-
-<!--                    <div class="col-4 mb-5 mt-5">-->
-<!--                        <div class="card">-->
-<!--                            <img src="1.jpg" class="card-img-top" alt="">-->
-<!--                            <div class="card-body">-->
-<!--                                <h5 class="card-title">Tên sản phẩm</h5>-->
-<!--                                <p class="card-text">Giá</p>-->
-<!--                                <p class="card-text">Chi tiết</p>-->
-<!--                                <a href="#" class="btn btn-primary">Mua</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <div class="col-4 mb-5 mt-5">-->
-<!--                        <div class="card">-->
-<!--                            <img src="1.jpg" class="card-img-top" alt="">-->
-<!--                            <div class="card-body">-->
-<!--                                <h5 class="card-title">Tên sản phẩm</h5>-->
-<!--                                <p class="card-text">Giá</p>-->
-<!--                                <p class="card-text">Chi tiết</p>-->
-<!--                                <a href="#" class="btn btn-primary">Mua</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <div class="col-4 mb-5 mt-5">-->
-<!--                        <div class="card">-->
-<!--                            <img src="1.jpg" class="card-img-top" alt="">-->
-<!--                            <div class="card-body">-->
-<!--                                <h5 class="card-title">Tên sản phẩm</h5>-->
-<!--                                <p class="card-text">Giá</p>-->
-<!--                                <p class="card-text">Chi tiết</p>-->
-<!--                                <a href="#" class="btn btn-primary">Mua</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
                 </div>
             </div>
         </div>
