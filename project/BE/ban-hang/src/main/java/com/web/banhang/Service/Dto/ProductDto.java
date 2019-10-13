@@ -1,7 +1,9 @@
 package com.web.banhang.Service.Dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.web.banhang.Entity.Image;
 
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ProductDto {
     private int idProduct;
     private String nameProduct;

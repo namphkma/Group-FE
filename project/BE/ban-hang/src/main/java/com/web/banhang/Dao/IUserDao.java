@@ -5,9 +5,14 @@ import java.util.List;
 
 public interface IUserDao {
     int count();
+
     List<User> getList();
+
     User getUserById(Integer idUser);
+
     int deleteUser(Integer idUser);
+
     void insertUser(User user);
+
     int updateUser(User user);
 }

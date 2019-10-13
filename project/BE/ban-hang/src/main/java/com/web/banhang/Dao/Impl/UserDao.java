@@ -23,7 +23,6 @@ public class UserDao implements IUserDao {
         this.jdbc = jdbc;
     }
 
-
     @Override
     public int count() {
         return jdbc
@@ -47,6 +46,7 @@ public class UserDao implements IUserDao {
                                 rs.getString("UrlAnhNguoiDung")
                                ));
     }
+
     @Override
     public User getUserById(Integer id) {
         //Language = SQL
@@ -55,6 +55,7 @@ public class UserDao implements IUserDao {
             return convertRsToUser(rs);
         });
     }
+
     private User convertRsToUser(ResultSet rs) throws SQLException {
         return new User( rs.getInt("IDNguoiDung"),
                         rs.getString("HoTen"),
@@ -90,6 +91,7 @@ public class UserDao implements IUserDao {
         jdbc.update(query,name,acc,pass,addr,phone,gender,dob,email,url);
 
     }
+
     @Override
     public int updateUser(User user){
         String query = "UPDATE NguoiDung SET HoTen=?, TaiKhoan=?, MatKhau=?,DiaChi=?,SoDT=?, GioiTinh=?,NgaySinh=?,Email=?,UrlAnhNguoiDung=? WHERE IDNguoiDung=?";
