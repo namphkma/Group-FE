@@ -7,6 +7,7 @@ import com.web.banhang.Entity.Product;
 import com.web.banhang.Entity.TypeProduct;
 import com.web.banhang.Service.Dto.ProductDto;
 import com.web.banhang.Service.IProductService;
+import com.web.banhang.Service.Mapper.ProductMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,15 +17,18 @@ public class ProductService implements IProductService {
 
     private IProductDao productDao;
     private ITypeProductDao typeProductDao;
+    private ProductMapper productMapper;
 
-    public ProductService(IProductDao productDao, ITypeProductDao typeProductDao) {
+    public ProductService(IProductDao productDao, ITypeProductDao typeProductDao, ProductMapper productMapper) {
         this.productDao = productDao;
         this.typeProductDao = typeProductDao;
+        this.productMapper = productMapper;
     }
 
     @Override
-    public List<Product> getListProduct() {
-        return productDao.getListProduct();
+    public List<ProductDto> getListProduct() {
+        List<Product> list = productDao.getListProduct();
+         return productMapper.mapToDto(list);
     }
 
     @Override

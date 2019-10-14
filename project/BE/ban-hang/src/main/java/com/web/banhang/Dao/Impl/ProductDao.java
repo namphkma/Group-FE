@@ -3,6 +3,7 @@ package com.web.banhang.Dao.Impl;
 import com.web.banhang.Dao.IProductDao;
 import com.web.banhang.Entity.Image;
 import com.web.banhang.Entity.Product;
+import com.web.banhang.Entity.TypeProduct;
 import com.web.banhang.Service.Dto.ProductDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -24,13 +25,13 @@ public class ProductDao implements IProductDao {
     @Override
     public void updateProduct(Product product) {
     String query = "Update Sanpham set TenSanPham =?,NguonGoc =?,Gia=? ,ChiTietSanPham=?,SoLuong=?,IDLoaiSanPham=? where IDSanPham=?";
-    jdbc.update(query, product.getNameProduct(), product.getOrigin(),product.getPrice(),product.getDetails(), product.getQuantity(), product.getIdTypeOfProduct(), product.getIdProduct());
+    jdbc.update(query, product.getNameProduct(), product.getOrigin(),product.getPrice(),product.getDetails(), product.getQuantity(), product.getType().getId(), product.getIdProduct());
     }
 
     @Override
     public void insertProduct(Product product) {
         String  quyery="INSERT INTO sanpham(TenSanPham,NguonGoc,Gia,ChiTietSanPham,SoLuong,IDLoaiSanPham) VALUES(?,?,?,?,?,?) ";
-        jdbc.update(quyery,product.getNameProduct(), product.getOrigin(),product.getPrice(),product.getDetails(), product.getQuantity(), product.getIdTypeOfProduct());
+        jdbc.update(quyery,product.getNameProduct(), product.getOrigin(),product.getPrice(),product.getDetails(), product.getQuantity(), product.getType().getId());
 
     }
 
@@ -42,7 +43,9 @@ public class ProductDao implements IProductDao {
 
     @Override
     public List<Product> getListProduct() {
-        String query = "SELECT sanpham.*, anh.IDAnh, anh.UrlAnh FROM  sanpham JOIN anh ON sanpham.IDSanPham = anh.IDSanPham";
+        String query = "SELECT sanpham.*, anh.IDAnh, anh.UrlAnh, loaisanpham.* FROM  sanpham" +
+                " JOIN anh ON sanpham.IDSanPham = anh.IDSanPham" +
+                " JOIN loaisanpham on loaisanpham.id = sanpham.IDLoaiSanPham";
         return jdbc.query(query,
                 (rs, rowNum) -> {
                     Product p = convertRsToProduct(rs);
@@ -76,15 +79,15 @@ public class ProductDao implements IProductDao {
                 });
     }
 
-    private Product convertRsToProduct(ResultSet rs)  throws SQLException  {
-        return     new Product(
-                    rs.getInt("IDSanPham"),
-                    rs.getString("TenSanPham"),
-                    rs.getString("NguonGoc"),
-                    rs.getInt("Gia"),
-                    rs.getString("ChiTietSanPham"),
-                    rs.getInt("SoLuong"),
-                    rs.getInt("IDLoaiSanPham"));
+    private Product convertRsToProduct(ResultSet rs) throws SQLException {
+        return new Product(
+                rs.getInt("IDSanPham"),
+                rs.getString("TenSanPham"),
+                rs.getString("NguonGoc"),
+                rs.getInt("Gia"),
+                rs.getString("ChiTietSanPham"),
+                rs.getInt("SoLuong"),
+                new TypeProduct(rs.getInt("IDLoaiSanPham"), rs.getString("TenLoaiSanPham")));
     }
 
     @Override

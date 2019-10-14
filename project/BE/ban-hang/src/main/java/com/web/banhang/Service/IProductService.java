@@ -7,7 +7,7 @@ import com.web.banhang.Service.Dto.ProductDto;
 import java.util.List;
 
 public interface IProductService {
-    List<Product> getListProduct();
+    List<ProductDto> getListProduct();
 
     List<ProductDto> getListTypeOfProduct(int idTypeOfProduct);
 

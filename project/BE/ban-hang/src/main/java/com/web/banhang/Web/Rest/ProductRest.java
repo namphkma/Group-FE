@@ -21,15 +21,11 @@ public class ProductRest {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Product>> getListProducts() {
+    public ResponseEntity<List<ProductDto>> getListProducts() {
         HttpHeaders httpHeaders = new HttpHeaders();
-        List<Product> productList = iProductService.getListProduct();
-        if (productList == null) {
-            return new ResponseEntity<List<Product>>(HttpStatus.NOT_FOUND);
-        }
+        List<ProductDto> productList = iProductService.getListProduct();
         httpHeaders.add("Number Of Records Found", String.valueOf(productList.size()));
-
-        return new ResponseEntity<List<Product>>(productList, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(productList, httpHeaders, HttpStatus.OK);
     }
 
     @GetMapping(value = "/getIdProduct/{idProduct}")

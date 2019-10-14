@@ -7,28 +7,31 @@ public class Product {
     private int price;
     private String details;
     private int quantity;
-    private int idTypeOfProduct;
+    private TypeProduct type;
     private Image image;
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
 
     public Product() {
     }
 
-    public Product(int idProduct, String nameProduct, String origin, int price, String details, int quantity, int idTypeOfProduct) {
+    public Product(int idProduct, String nameProduct, String origin, int price, String details, int quantity, TypeProduct type, Image image) {
         this.idProduct = idProduct;
         this.nameProduct = nameProduct;
         this.origin = origin;
         this.price = price;
         this.details = details;
         this.quantity = quantity;
-        this.idTypeOfProduct = idTypeOfProduct;
+        this.type = type;
+        this.image = image;
+    }
+
+    public Product(int idProduct, String nameProduct, String origin, int price, String details, int quantity, TypeProduct type) {
+        this.idProduct = idProduct;
+        this.nameProduct = nameProduct;
+        this.origin = origin;
+        this.price = price;
+        this.details = details;
+        this.quantity = quantity;
+        this.type = type;
     }
 
     public int getIdProduct() {
@@ -79,11 +82,19 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public int getIdTypeOfProduct() {
-        return idTypeOfProduct;
+    public TypeProduct getType() {
+        return type;
     }
 
-    public void setIdTypeOfProduct(int idTypeOfProduct) {
-        this.idTypeOfProduct = idTypeOfProduct;
+    public void setType(TypeProduct type) {
+        this.type = type;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
